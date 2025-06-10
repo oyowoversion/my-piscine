@@ -1,0 +1,2 @@
+#!/bin/bash
+ls -ltu --time=atime | awk 'NR>1 && !/^d.* \.$|^d.* \.\.$|^total/ {print $NF}' | while read -r f; do [ -d "$f" ] && echo -n "$f/," || echo -n "$f,"; done | sed 's/,$//'; echo
